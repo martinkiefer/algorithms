@@ -3,7 +3,7 @@ from random import shuffle, randint
 from math import log, ceil
 
 """
-This file contains an implementation of Munro-Pattersons algorithm for exakt rank selection using multiple passes
+This file contains an implementation of Munro-Patersons algorithm for exakt rank selection using multiple passes
 and limited storage. 
 
 Further optimizations could be added to the implementation:
@@ -14,7 +14,7 @@ Further optimizations could be added to the implementation:
 
 
 def even_merge(a, b):
-    """Performs the even merge operation required for Munro-Patterson.
+    """Performs the even merge operation required for Munro-Paterson.
     
     It takes two lists of sorted in ascending order and creates a new sorted list that contains every second 
     element from input lists. If both samples are i-samples, this function yields an i+1-sample.
@@ -141,8 +141,8 @@ class ISample:
         return self.buffers[-1][0], len(self.buffers) - 1
 
 
-class MunroPattersonExactMultiPass:
-    """ A class that implements Munro and Pattersons algorithm for exact rank computation under limited storage using
+class MunroPatersonExactMultiPass:
+    """ A class that implements Munro and Patersons algorithm for exact rank computation under limited storage using
     multipe passes.
     """
 
@@ -222,14 +222,14 @@ class MunroPattersonExactMultiPass:
 
 
 def test(s, i):
-    """ Run a test for the Munro-Patterson algorithm with a shuffled range of integers of size 2**i * s.
+    """ Run a test for the Munro-Paterson algorithm with a shuffled range of integers of size 2**i * s.
 
     :param s: The parameter s, which also controls the size of the working sample.
     :param i: The power of two variable i.
     """
     converged = False
     tr = randint(1, 2 ** i * s + 1)
-    mp = MunroPattersonExactMultiPass(tr, s)
+    mp = MunroPatersonExactMultiPass(tr, s)
     bounds = None
     while not converged:
         # vals = list(range(1,2**i * s + 1))
